@@ -1,10 +1,10 @@
 import React from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { BookOpen, Zap, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import "./blobAnimation.css";
 
 export const Home = () => {
-  // Generate random floating stars/bubbles
   const stars = [...Array(20)].map((_, i) => ({
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
@@ -14,10 +14,9 @@ export const Home = () => {
   }));
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center px-5 overflow-hidden
-      border-8 border-transparent p-2 bg-clip-padding animate-gradient-border font-sans">
-
-      {/* ================= BACKGROUND LOTTIE ================= */}
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-5 overflow-hidden bg-white font-sans">
+      
+      {/* Background Lottie Animations */}
       <div className="absolute inset-0 w-full h-full z-0 opacity-30 pointer-events-none">
         <DotLottieReact
           src="https://lottie.host/82cecabb-12b9-4c46-bc2d-454af49eb415/FnwrNLJoes.lottie"
@@ -26,12 +25,12 @@ export const Home = () => {
         />
       </div>
 
-      {/* ================= FLOATING BLOBS ================= */}
+      {/* Blobs */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob float-animation"></div>
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 float-animation"></div>
       <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 float-animation"></div>
 
-      {/* ================= FLOATING STARS / BUBBLES ================= */}
+      {/* Floating Stars */}
       {stars.map((star, i) => (
         <div
           key={i}
@@ -47,7 +46,7 @@ export const Home = () => {
         />
       ))}
 
-
+      {/* Floating small Lotties */}
       <div className="absolute top-10 left-10 w-60 h-60 opacity-30 float-animation">
         <DotLottieReact
           src="https://lottie.host/59876f40-b481-4f1a-b07d-c87a6ecaae9a/L6INjERbiK.lottie"
@@ -63,7 +62,7 @@ export const Home = () => {
         />
       </div>
 
-     
+      {/* Floating messages */}
       <div className=" hidden md:block absolute top-1/4 left-20 bg-indigo-100 px-5 py-2 rounded-2xl shadow-lg animate-float-slow text-indigo-700 font-medium text-lg">
         “Summarize your knowledge in a single click!”
       </div>
@@ -74,7 +73,7 @@ export const Home = () => {
         “Challenge yourself with dynamic quizzes!”
       </div>
 
-    
+      {/* Main Content */}
       <div className="relative z-10 text-center max-w-4xl space-y-6">
         <h1 className="text-6xl md:text-7xl font-extrabold text-indigo-600 tracking-tight drop-shadow-lg hover:scale-105 transition-transform duration-500">
           StudySprint <Star className="inline text-yellow-400 animate-bounce" />
@@ -93,22 +92,18 @@ export const Home = () => {
           “Turn any document into a powerful study companion. AI-powered insights at your fingertips.” 
         </p>
 
-        <button className="mt-6 cursor-pointer px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-300 shadow-lg transform hover:-translate-y-1 hover:scale-105 flex items-center space-x-2">
-          <span className="cursor-pointer">Get Started</span>
-          <Zap className="w-5 h-5" />
-        </button>
+        <Link to="/signIn">
+          <button className="mt-6 cursor-pointer px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-300 shadow-lg transform hover:-translate-y-1 hover:scale-105 flex items-center space-x-2">
+            <span className="cursor-pointer">Get Started</span>
+            <Zap className="w-5 h-5" />
+          </button>
+        </Link>
       </div>
 
-      
-      <div className="absolute bottom-0 w-full  right-[-100px] flex justify-center z-0">
-        <div className="w-80 md:w-96 h-80 md:h-96 opacity-70">
-          <DotLottieReact
-            src="https://lottie.host/59876f40-b481-4f1a-b07d-c87a6ecaae9a/L6INjERbiK.lottie"
-            loop
-            autoplay
-          />
-        </div>
-      </div>
+      <footer className="absolute bottom-4 w-full text-center text-gray-500 text-sm md:text-base z-5 opacity-15">
+        Developed by Shreekant Yadav
+      </footer>
     </div>
   );
 };
+
