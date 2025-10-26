@@ -5,7 +5,7 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://studysprint-cpag.onrender.com",
   withCredentials: true, // important for cookies
 });
 
